@@ -50,14 +50,9 @@ class Cart:
         self.lines.clear()
 
     def total(self) -> float:
-        _total = 0.0
         if len(self.lines) == 0:
             return
-        else:
-            for item in self.lines:
-                _total += item["price"] * item["qty"]
-
-        return round(_total, 2)
+        return round(sum(item["price"] * item["qty"] for item in self.lines), 2)
 
     def __repr__(self) -> str:
         if len(self.lines) == 0: return "Empty"
