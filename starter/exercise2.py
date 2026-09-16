@@ -24,6 +24,8 @@ class Cart:
         self._menu = load_menu()
 
     def add_item(self, item: dict, qty: int = 1) -> None:
+        """Add item to lines if it exists and is available. 
+        If item is already added, increase quantity."""
         if not item in self._menu or not item["available"]:
             return 
 
@@ -41,20 +43,24 @@ class Cart:
 
         
     def remove_item(self, item_id: int) -> None:
+        """Remove item if it exists"""
         for line in self.lines:
             if line["item_id"] == item_id: 
                 self.lines.remove(line)
 
     def clear(self) -> None:
+        """Clear lines (cart)"""
         if len(self.lines) == 0: return 
         self.lines.clear()
 
     def total(self) -> float:
+        """Check if cart is not empty and return sum of cart"""
         if len(self.lines) == 0:
             return
         return round(sum(item["price"] * item["qty"] for item in self.lines), 2)
 
     def __repr__(self) -> str:
+        """Class printout"""
         if len(self.lines) == 0: return "Empty"
 
         cart = "=======CART=======" 

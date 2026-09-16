@@ -26,6 +26,7 @@ class Cart:
         self.lines: list[dict] = []
 
     def add_item(self, item: dict, qty: int = 1) -> None:
+        """Sanity check parameters and increase cart or update quantity respectively"""
         # TODO: validate FIRST, then mutate.
         #   if qty < 1:                 raise ValueError(...)
         #   if not item["available"]:   raise OutOfStockError(...)
@@ -47,6 +48,7 @@ class Cart:
                                 "qty": qty})
 
     def remove_item(self, item_id: int) -> None:
+        """Remove item if it exists"""
         for line in self.lines:
             if line["item_id"] == item_id: 
                 self.lines.remove(line)
@@ -54,9 +56,11 @@ class Cart:
         raise KeyError("Item not in cart")
 
     def total(self) -> float:
+        """Return total of items in cart"""
         return round(sum(line["price"] * line["qty"] for line in self.lines), 2)
 
     def __repr__(self) -> str:
+        """Class prinout"""
         return f"<Cart {len(self.lines)} items, ${self.total():.2f}>"
 
 
