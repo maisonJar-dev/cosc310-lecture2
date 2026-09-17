@@ -88,11 +88,3 @@ if __name__ == "__main__":
         cart.add_item(miso, 0)
     except OutOfStockError as e:
         print(f"Rejected: {e}")
-
-    # TODO: demonstrate each rejection with try/except and a readable message.
-    # Example:
-    # try:
-    #     cart.add_item(gyoza, 0)
-    # except ValueError as e:
-    #     print(f"Rejected: {e}")
-

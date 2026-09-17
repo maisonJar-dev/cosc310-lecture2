@@ -13,9 +13,8 @@ Store each line as a dictionary:
     {"item_id": 1, "name": "Tonkotsu Ramen", "price": 16.50, "qty": 2}
 """
 
-from venv import logger
 
-from exercise1 import load_menu # what are we importing here? Food for thought.
+from exercise1 import load_menu  # what are we importing here? Food for thought.
 
 
 class Cart:
